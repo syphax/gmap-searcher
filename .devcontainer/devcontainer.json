@@ -1,0 +1,29 @@
+// .devcontainer/devcontainer.json
+{
+  "name": "Gmap Data Extractor",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      // You can set build arguments here if you ever need to use a Dockerfile
+    }
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ],
+  "forwardPorts": [3000],
+  "postCreateCommand": "npm install",
+  "remoteUser": "node"
+  
+  // Add this section in your devcontainer.json to manage environment variables
+	"containerEnv": {
+    "REACT_APP_GOOGLE_MAPS_API_KEY": "${localEnv:REACT_APP_GOOGLE_MAPS_API_KEY}"
+},
+	"remoteEnv": {
+    "REACT_APP_GOOGLE_MAPS_API_KEY": "${secrets:REACT_APP_GOOGLE_MAPS_API_KEY}"
+}
+
+}
