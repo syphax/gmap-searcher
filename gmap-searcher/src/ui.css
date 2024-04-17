@@ -1,0 +1,64 @@
+
+/* SearchForm */
+
+/* SearchForm.css */
+.form-container {
+    background-color: #333;  /* Maintain the dark background for the form */
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.form-field {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Allocate 1 part of space to labels and 3 parts to inputs */
+    gap: 10px;                      /* Space between columns */
+    margin-bottom: 10px;            /* Space between rows */
+}
+
+input[type="text"],
+button {
+    width: 100%;                    /* Full width to fill grid column */
+    padding: 8px;
+    box-sizing: border-box;         /* Include padding and border in the width calculation */
+}
+
+button {
+    grid-column: 1 / -1;            /* Make the button span all columns */
+    padding: 10px;
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+/* Autocomplete list */
+
+.autocomplete-list {
+    list-style-type: none;         /* Remove bullet points */
+    padding-left: 0;               /* Remove padding */
+    margin-top: 5px;               /* Small space between input and list */
+    background-color: #333;        /* Matching background color */
+    border: 1px solid #555;        /* Add subtle border */
+    border-radius: 4px;            /* Match border radius of inputs */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for dropdown */
+    position: absolute;            /* Positioning relative to parent */
+    width: calc(100% - 2px);       /* Full width of the input field, adjusting for border */
+    box-sizing: border-box;        /* Include border in width calculation */
+    z-index: 1000;                 /* Ensure it stacks on top of other content */
+}
+
+.autocomplete-list li {
+    padding: 8px;                  /* Padding for each item */
+    cursor: pointer;               /* Cursor pointer to indicate clickable */
+    color: white;                  /* Text color for readability */
+}
+
+.autocomplete-list li:hover {
+    background-color: #444;        /* Hover state background */
+}

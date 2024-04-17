@@ -1,6 +1,10 @@
 // .devcontainer/devcontainer.json
 {
+
+  // Edit this based on whatever you're doing
   "name": "Gmap Data Extractor",
+
+  // This is a useful instance that has Node installed
   "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:0-14",
 
   "settings": {
