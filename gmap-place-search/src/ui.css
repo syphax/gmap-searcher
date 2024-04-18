@@ -1,7 +1,18 @@
 
-/* SearchForm */
+body {
+    background-color: #1e1e1e;
+}
 
-/* SearchForm.css */
+h1 {
+    color: white;
+}
+
+ul {
+    color: white;
+}
+
+/* DynamicInputForm */
+
 .form-container {
     background-color: #333;  /* Maintain the dark background for the form */
     padding: 20px;

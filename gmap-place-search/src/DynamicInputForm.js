@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { fetchPlaces } from './apiService'; // Import the API service function
 
 function DynamicInputForm() {
-    const [inputRows, setInputRows] = useState([{ searchText: '', maxResults: '' }]);
+    const [inputRows, setInputRows] = useState([{ searchText: '', maxResults: 20 }]);
+
     const [csvData, setCsvData] = useState('');
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY; // Load the API key from environment variables
 
@@ -18,7 +19,7 @@ function DynamicInputForm() {
         setInputRows(newInputRows);
         // Automatically add a new row if the current row being edited is the last row
         if (index === inputRows.length - 1) {
-            setInputRows([...newInputRows, { searchText: '', maxResults: '' }]);
+            setInputRows([...newInputRows, { searchText: '', maxResults: 20 }]);
         }
     };
 
@@ -42,16 +43,38 @@ function DynamicInputForm() {
     };
 
     // Function to convert JSON data to CSV
-    const convertToCSV = (data) => {
-        const headers = Object.keys(data[0]).join(',');
-        const rows = data.map(row => 
-            Object.values(row).map(field => 
-                `"${field.toString().replace(/"/g, '""')}"` // Escape double quotes
-            ).join(',')
-        );
+// Function to convert JSON data to CSV
+const convertToCSV = (data) => {
+    const headers = [
+        'ID',
+        'Name',
+        'Display Name',
+        'Types',
+        'National Phone Number',
+        'Formatted Address',
+        'Rating',
+        'User Rating Count',
+        'Google Maps URI',
+        'Website URI'
+    ].join(',');
+    const rows = data.map(row => {
+        return [
+            row.id,
+            row.name,
+            row.displayName.text,
+            row.types ? row.types.join(';') : '', // Check if types is defined before joining
+            row.nationalPhoneNumber || '',
+            row.formattedAddress,
+            row.rating || '',
+            row.userRatingCount || '',
+            row.googleMapsUri,
+            row.websiteUri || 'NULL'
+        ].map(field => `"${field.toString().replace(/"/g, '""')}"`).join(',');
+    });
 
-        return [headers, ...rows].join('\n');
-    };
+    return [headers, ...rows].join('\n');
+};
+
 
     return (
         <div>
@@ -79,12 +102,12 @@ function DynamicInputForm() {
                         </button>
                     </div>
                 ))}
-                <button type="submit">Collect place info</button>
+                <button type="submit">Search!</button>
             </form>
             {csvData && (
                 <div>
-                    <textarea value={csvData} readOnly style={{ width: '100%', height: '200px' }} />
-                    <button onClick={() => downloadCSV(csvData)}>Save as CSV</button>
+                    <textarea value={csvData} readOnly style={{ width: '100%', height: '400px' }} />
+                    <button onClick={() => downloadCSV(csvData)}>Save results as CSV</button>
                 </div>
             )}
         </div>
@@ -97,7 +120,7 @@ const downloadCSV = (csvData) => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', 'places_info.csv');
+    link.setAttribute('download', 'google_places_search_results.csv');
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();

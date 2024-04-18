@@ -6,7 +6,12 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Place Information Collector</h1>
+                <ul>
+                <h1>Google Places Batch Search</h1>
+                <li>Enter one or more search terms below</li>
+                <li>Click the "Search" button to get results</li>
+                <li>Click on "Save results as CSV" to save the results as a CSV</li>
+                </ul>
             </header>
             <div className="form-container">
                 <DynamicInputForm />
