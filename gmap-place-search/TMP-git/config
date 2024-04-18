@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "gmap-place-search"]
+	url = https://github.com/syphax/gmap-place-search
+	fetch = +refs/heads/*:refs/remotes/gmap-place-search/*
+[remote "main"]
+	url = https://github.com/syphax/gmap-place-search
+	fetch = +refs/heads/*:refs/remotes/main/*
