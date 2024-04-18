@@ -36,7 +36,6 @@ button {
 }
 
 button {
-    grid-column: 1 / -1;            /* Make the button span all columns */
     padding: 10px;
     background-color: #555;
     color: white;
