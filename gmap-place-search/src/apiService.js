@@ -8,7 +8,7 @@ export const fetchPlaces = async (query, key, maxResults = 20) => {
     const headers = {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': key,
-        'X-Goog-FieldMask': 'name,id,types,nationalPhoneNumber,formattedAddress,rating,googleMapsUri,websiteUri,displayName,userRatingCount'
+        'X-Goog-FieldMask': 'places.name,places.id,places.nationalPhoneNumber,places.formattedAddress,places.rating,places.googleMapsUri,places.websiteUri,places.displayName,places.userRatingCount'
     };
 
     try {
