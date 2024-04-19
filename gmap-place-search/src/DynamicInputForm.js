@@ -4,7 +4,7 @@ import { fetchPlaces } from './apiService'; // Import the API service function
 function DynamicInputForm() {
     const [inputRows, setInputRows] = useState([{ searchText: '', maxResults: 20 }]);
     const [apiKey, setApiKey] = useState('');
-    const [keywords, setKeywords] = useState('Renault,Iveco,DAF,VW,Volkswagen,MAN');
+    const [keywords, setKeywords] = useState('DAF,Iveco,Mercedes,Renault,Scania,VW,Volkswagen,Volvo');
     const [csvData, setCsvData] = useState('');
 
     const handleInputChange = (index, event) => {
