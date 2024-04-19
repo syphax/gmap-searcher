@@ -28,6 +28,11 @@ ul {
     margin-bottom: 10px;            /* Space between rows */
 }
 
+p {
+    color: white;
+    padding: 8px;
+}
+
 input[type="text"],
 button {
     width: 100%;                    /* Full width to fill grid column */

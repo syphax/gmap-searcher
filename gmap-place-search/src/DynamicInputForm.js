@@ -4,7 +4,7 @@ import { fetchPlaces } from './apiService'; // Import the API service function
 function DynamicInputForm() {
     const [inputRows, setInputRows] = useState([{ searchText: '', maxResults: 20 }]);
     const [apiKey, setApiKey] = useState('');
-    const [keywords, setKeywords] = useState('DAF,Iveco,Mercedes,Renault,Scania,VW,Volkswagen,Volvo');
+    const [keywords, setKeywords] = useState('DAF,Iveco,Man,Mercedes,Renault,Scania,VW,Volkswagen,Volvo');
     const [csvData, setCsvData] = useState('');
 
     const handleInputChange = (index, event) => {
@@ -162,7 +162,7 @@ function DynamicInputForm() {
 }
 
 const downloadCSV = (csvData) => {
-    const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8-sig;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);

@@ -2,7 +2,20 @@ export const fetchPlaces = async (query, key, maxResults = 20) => {
     const url = 'https://places.googleapis.com/v1/places:searchText';
 
     const params = {
-        textQuery: query
+        textQuery: query,
+        maxResultCount: maxResults,
+        "locationBias": {
+            "rectangle": {
+              "low": {
+                "latitude": 0,
+                "longitude": -15
+              },
+              "high": {
+                "latitude": 90,
+                "longitude": 40
+              }
+            }
+          }
     };
 
     const headers = {
